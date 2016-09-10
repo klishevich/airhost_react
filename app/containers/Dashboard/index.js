@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import messages from './messages';
 import { FormattedMessage } from 'react-intl';
 import H1 from 'components/H1';
+import Bookings from 'containers/Bookings';
 
 import styles from './styles.css';
 
@@ -37,6 +38,7 @@ export class Dashboard extends React.Component {
         <H1>
           Dashboard
         </H1>
+        <Bookings/>
         <ul className={styles.list}>
           <li className={styles.listItem}>
             <p className={styles.listItemTitle}>

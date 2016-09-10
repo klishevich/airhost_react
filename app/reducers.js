@@ -7,6 +7,7 @@ import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import { GET_BOOKINGS } from 'actions/bookingActions';
 
 /*
  * routeReducer
@@ -36,12 +37,25 @@ function routeReducer(state = routeInitialState, action) {
   }
 }
 
+function getBookings(state = routeInitialState, action) {
+  switch (action.type) {
+    case GET_BOOKINGS:
+      console.log('test test');
+      return Object.assign({}, state, {
+        test: 'test'
+      })
+    default:
+      return state
+  }
+}
+
 /**
  * Creates the main reducer with the asynchronously loaded ones
  */
 export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
+    bookings: getBookings,
     language: languageProviderReducer,
     ...asyncReducers,
   });
