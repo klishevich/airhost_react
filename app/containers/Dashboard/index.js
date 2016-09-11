@@ -28,6 +28,8 @@ export class Dashboard extends React.Component {
   };
 
   render() {
+    console.log('Dashboard', this.props)
+    const test_var = this.props.test ? this.props.test.test_var : ''
     return (
       <div>
         <Helmet
@@ -39,6 +41,7 @@ export class Dashboard extends React.Component {
           Dashboard
         </H1>
         <Bookings/>
+        <div>test_var: {test_var}</div>
         <ul className={styles.list}>
           <li className={styles.listItem}>
             <p className={styles.listItemTitle}>
@@ -57,10 +60,17 @@ Dashboard.propTypes = {
   changeRoute: React.PropTypes.func,
 };
 
+function mapStateToProps(state) {
+  return {
+    bookings: state.bookings,
+    test: 'test'
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     changeRoute: (url) => dispatch(push(url)),
   };
 }
 
-export default connect(null, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

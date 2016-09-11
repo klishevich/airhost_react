@@ -35,7 +35,6 @@ export default function configureStore(initialState = {}, history) {
 
   // Create hook for async sagas
   store.runSaga = sagaMiddleware.run;
-
   sagaMiddleware.run(rootSaga);
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
